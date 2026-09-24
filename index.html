@@ -381,5 +381,390 @@
 </section>
 <!-- ===== КОНЕЦ ПРЕВЬЮ КАТАЛОГА ===== -->
 
+<!-- ===== НАЧАЛО SEO-ТЕКСТА (вставлять на сайт) ===== -->
+<style>
+.kv-seo{
+  --kv-teal:#3a9aa2;--kv-teal-dark:#2d7f86;--kv-rose:#b33a5e;--kv-coral:#e8707e;--kv-peach:#f3a26b;
+  --kv-ink:#43363f;--kv-muted:#7a6b73;--kv-line:#f0dcdc;--kv-soft:#fdf1ef;--kv-tsoft:#e9f5f6;--kv-bg:#fffcfa;
+  box-sizing:border-box;max-width:1140px;margin:0 auto;padding:40px 16px 24px;font-family:inherit;color:var(--kv-ink);
+}
+.kv-seo *,.kv-seo *::before,.kv-seo *::after{box-sizing:border-box}
+.kv-seo__wrap{max-width:900px;margin:0 auto}
+.kv-seo h2{margin:0 0 18px;font-size:clamp(23px,2.6vw,30px);line-height:1.22;font-weight:600;color:var(--kv-teal)}
+.kv-seo p{margin:0 0 14px;font-size:16px;line-height:1.72}
+.kv-seo__lead{font-size:17px!important}
+
+.kv-ico{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;
+  border-radius:16px 0 16px 0;background:var(--kv-tsoft);color:var(--kv-teal-dark)}
+.kv-ico svg{width:22px;height:22px}
+.kv-ico--sm{flex-basis:36px;width:36px;height:36px;border-radius:12px 0 12px 0;background:var(--kv-soft);color:var(--kv-rose)}
+.kv-ico--sm svg{width:19px;height:19px}
+.kv-ico--xs{flex-basis:26px;width:26px;height:26px;border-radius:9px 0 9px 0;background:var(--kv-soft);color:var(--kv-coral)}
+.kv-ico--xs svg{width:15px;height:15px}
+
+.kv-seo__sec{clear:both;padding-top:34px}
+.kv-seo h3{display:flex;align-items:center;gap:14px;margin:0 0 14px;
+  font-size:clamp(18px,1.9vw,22px);line-height:1.3;font-weight:600;color:var(--kv-teal-dark)}
+
+.kv-seo__stats{clear:both;list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kv-seo__stats li{padding:16px 14px;text-align:center;background:#fff;border:1px solid var(--kv-line);border-radius:18px 0 18px 0}
+.kv-seo__stats b{display:block;font-size:22px;line-height:1.2;font-weight:700;color:var(--kv-rose)}
+.kv-seo__stats span{display:block;margin-top:4px;font-size:13px;line-height:1.35;color:var(--kv-muted)}
+
+.kv-seo__fig{margin:4px 0 16px;width:42%}
+.kv-seo__fig--right{float:right;margin-left:32px}
+.kv-seo__fig--left{float:left;margin-right:32px}
+.kv-seo__fig img{display:block;width:100%;height:auto;aspect-ratio:570/430;object-fit:cover;border-radius:70px 0 70px 0;background:var(--kv-soft)}
+.kv-seo__fig figcaption{margin-top:8px;font-size:13px;line-height:1.4;color:var(--kv-muted);text-align:center}
+
+.kv-seo__note{display:flex;gap:14px;align-items:flex-start;margin:6px 0 16px!important;padding:16px 20px;
+  background:var(--kv-soft);border-radius:20px 0 20px 0;color:var(--kv-rose)}
+.kv-seo__note .kv-ico--sm{background:#fff}
+
+.kv-seo__chips{list-style:none;margin:6px 0 16px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kv-seo__chips li{display:flex;gap:12px;align-items:center;padding:12px 14px;background:#fff;border:1px solid var(--kv-line);border-radius:16px 0 16px 0;font-size:15px;line-height:1.45}
+
+.kv-seo__adv{list-style:none;margin:8px 0 20px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.kv-seo__adv li{display:flex;gap:12px;align-items:center;padding:14px;background:#fff;border:1px solid var(--kv-line);
+  border-radius:18px 0 18px 0;font-size:14.5px;line-height:1.45;transition:border-color .2s,transform .2s}
+.kv-seo__adv li:hover{border-color:var(--kv-coral);transform:translateY(-2px)}
+
+.kv-seo__cta{clear:both;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:30px;padding:22px 26px;
+  color:#fff;background:linear-gradient(135deg,var(--kv-peach),var(--kv-coral));border-radius:30px 0 30px 0}
+.kv-seo__cta p{margin:0!important;font-weight:600;font-size:16px;line-height:1.5}
+.kv-seo__btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:20px 0 20px 0;
+  background:#fff;color:var(--kv-rose);font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s}
+.kv-seo__btn svg{width:18px;height:18px}
+.kv-seo__btn:hover{transform:translateX(3px)}
+
+.kv-seo__body{position:relative;overflow:hidden;transition:max-height .5s ease}
+.kv-seo.is-collapsible .kv-seo__body{max-height:560px}
+.kv-seo.is-collapsible .kv-seo__body::after{content:"";position:absolute;left:0;right:0;bottom:0;height:160px;pointer-events:none;
+  background:linear-gradient(rgba(255,252,250,0),var(--kv-bg));transition:opacity .3s}
+.kv-seo.is-open .kv-seo__body::after{opacity:0}
+.kv-seo__toggle{display:none;margin:16px auto 0;padding:11px 28px;border:1.5px solid var(--kv-teal);border-radius:22px 0 22px 0;
+  background:none;cursor:pointer;font:inherit;font-size:15px;font-weight:600;color:var(--kv-teal-dark);transition:background-color .2s,color .2s}
+.kv-seo.is-collapsible .kv-seo__toggle{display:block}
+.kv-seo__toggle:hover{background:var(--kv-teal);color:#fff}
+
+/* ---- FAQ ---- */
+.kv-faq{margin-top:48px;display:grid;grid-template-columns:280px minmax(0,1fr);gap:40px;align-items:start}
+.kv-faq__aside{position:sticky;top:16px;padding:26px 22px;background:var(--kv-tsoft);border-radius:30px 0 30px 0}
+.kv-faq__aside h2{font-size:24px;margin-bottom:10px}
+.kv-faq__aside p{font-size:15px;line-height:1.6;color:var(--kv-ink)}
+.kv-faq__call{display:flex;align-items:center;gap:10px;margin-top:6px;padding:12px 16px;border-radius:18px 0 18px 0;
+  background:var(--kv-teal);color:#fff;font-weight:600;font-size:15px;text-decoration:none;transition:background-color .2s}
+.kv-faq__call:hover{background:var(--kv-teal-dark)}
+.kv-faq__call svg{width:18px;height:18px}
+.kv-faq__msg{display:flex;gap:8px;margin-top:10px}
+.kv-faq__msg a{flex:1;padding:9px 6px;text-align:center;font-size:13px;font-weight:600;color:var(--kv-teal-dark);
+  border:1.5px solid var(--kv-teal);border-radius:14px 0 14px 0;text-decoration:none}
+.kv-faq__msg a:hover{background:#fff}
+.kv-faq__group{margin:0 0 12px!important}
+.kv-faq__list+.kv-faq__group{margin-top:34px!important}
+.kv-faq__list{display:grid;gap:10px}
+.kv-faq__item{background:#fff;border:1px solid var(--kv-line);border-radius:18px 0 18px 0;transition:border-color .2s,box-shadow .2s}
+.kv-faq__item[open]{border-color:var(--kv-coral);box-shadow:0 8px 24px rgba(179,58,94,.08)}
+.kv-faq__item summary{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;list-style:none}
+.kv-faq__item summary::-webkit-details-marker{display:none}
+.kv-faq__item summary:focus-visible{outline:2px solid var(--kv-teal);outline-offset:2px;border-radius:18px 0 18px 0}
+.kv-faq__q{flex:1;font-size:15.5px;line-height:1.4;font-weight:600;color:var(--kv-ink);transition:color .2s}
+.kv-faq__item summary:hover .kv-faq__q,.kv-faq__item[open] .kv-faq__q{color:var(--kv-rose)}
+.kv-faq__chev{flex:0 0 22px;color:var(--kv-teal);transition:transform .25s}
+.kv-faq__chev svg{width:22px;height:22px;display:block}
+.kv-faq__item[open] .kv-faq__chev{transform:rotate(180deg)}
+.kv-faq__item::details-content{block-size:0;overflow:hidden;transition:block-size .3s ease,content-visibility .3s allow-discrete}
+.kv-faq__item[open]::details-content{block-size:auto}
+.kv-seo{interpolate-size:allow-keywords}
+.kv-faq__a{padding:0 18px 16px 54px}
+.kv-faq__a p{margin:0!important;font-size:15px;line-height:1.65;color:var(--kv-muted)}
+
+@media (prefers-reduced-motion:reduce){.kv-seo *{transition:none!important}}
+@media (max-width:900px){
+  .kv-seo__adv{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kv-faq{grid-template-columns:1fr;gap:20px}
+  .kv-faq__aside{position:static}
+}
+@media (max-width:600px){
+  .kv-seo{padding:28px 12px 16px}
+  .kv-seo p{font-size:15px}
+  .kv-seo__lead{font-size:16px!important}
+  .kv-seo h3{gap:12px}
+  .kv-ico{flex-basis:38px;width:38px;height:38px;border-radius:13px 0 13px 0}
+  .kv-ico svg{width:19px;height:19px}
+  .kv-seo__fig,.kv-seo__fig--right,.kv-seo__fig--left{float:none;width:100%;margin:6px 0 16px}
+  .kv-seo__fig img{border-radius:50px 0 50px 0}
+  .kv-seo__stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .kv-seo__stats b{font-size:19px}
+  .kv-seo__chips,.kv-seo__adv{grid-template-columns:1fr;gap:8px}
+  .kv-seo__cta{flex-direction:column;align-items:stretch;text-align:center;padding:20px 18px}
+  .kv-seo__btn{justify-content:center}
+  .kv-seo.is-collapsible .kv-seo__body{max-height:640px}
+  .kv-faq__item summary{padding:12px 12px;gap:10px}
+  .kv-faq__q{font-size:14.5px}
+  .kv-faq__a{padding:0 14px 14px 14px}
+}
+</style>
+
+<section class="kv-seo" aria-labelledby="kv-seo-title">
+  <div class="kv-seo__wrap">
+    <div class="kv-seo__body" id="kv-seo-body">
+      <h2 id="kv-seo-title">Почему стоит покупать цветы в Киеве онлайн</h2>
+      <figure class="kv-seo__fig kv-seo__fig--right"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-23-570x430.webp" width="570" height="430" alt="Букет роз от студии Kvitochka" loading="lazy"><figcaption>Каждый букет собирают флористы Kvitochka</figcaption></figure>
+      <p class="kv-seo__lead">Качественные и свежие цветы остаются одним из самых любимых и тёплых подарков. Изысканные розы, пышные гортензии, весенние тюльпаны и осенние хризантемы уместны всегда: они помогают признаться в любви, украсить праздник, помириться или просто выразить заботу без лишних слов. Заказать цветы с доставкой в Киеве в студии Kvitochka — значит получить букет, созданный профессиональными флористами.</p>
+      <p>Независимо от адреса получателя, купить цветы с доставкой по Киеву в Kvitochka можно непосредственно на сайте. Выберите букет, заполните простую форму заявки и оплатите заказ картой.</p>
+      <p class="kv-seo__note"><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span><span>Такой формат особенно удобен, если вы находитесь в другом городе или даже за пределами Украины, но хотите, чтобы цветы были доставлены в нужный момент.</span></p>
+
+      <ul class="kv-seo__stats">
+        <li><b>20+ лет</b><span>во флористике</span></li>
+        <li><b>1–2 часа</b><span>срочная доставка</span></li>
+        <li><b>6:00–23:00</b><span>доставка ежедневно</span></li>
+        <li><b>Киев</b><span>пригород и область</span></li>
+      </ul>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><span>Удобство курьерской доставки цветов</span></h3>
+        <p>Такой способ дарить подарки ценился всегда: важные презенты передавали через надёжных людей. Сегодня служба доставки делает этот жест ещё удобнее.</p>
+        <p>В большом городе не всегда легко найти время для поездки за букетом. Работа, пробки, командировки или плотный график могут отложить даже важный жест. Именно поэтому доставка цветов по Киеву от студии Kvitochka — это удобное и практичное решение: вы выбираете букет онлайн, а курьер доставляет его по указанному адресу. Купить цветы онлайн — значит не тратить время на поездки, пробки и поиск подходящего букета.</p>
+        <p>Доставка букетов по Киеву позволяет сделать приятный сюрприз без лишних хлопот и потери времени.</p>
+      </div>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></span><span>Свежесть цветов и бережное отношение к букету</span></h3>
+        <figure class="kv-seo__fig kv-seo__fig--left"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-23-570x430.webp" width="570" height="430" alt="Свежий букет с доставкой по Киеву" loading="lazy"><figcaption>Курьер защитит букет от ветра и непогоды</figcaption></figure>
+        <p>Даже собственный автомобиль не всегда гарантирует, что букет сохранит безупречный вид после поездки. Онлайн-заказ позволяет выбрать свежие цветы и не беспокоиться об их транспортировке. Вам не придётся переживать, что букет пострадает от ветра, дождя или тесноты в общественном транспорте: курьер защитит композицию от непогоды, и она прибудет аккуратной и свежей.</p>
+        <p>Профессиональный подход заметен и во время вручения: цветы передают бережно. При необходимости курьер подскажет, как правильно ухаживать за букетом, чтобы он дольше сохранял свежесть. Это особенно важно, если вы хотите не просто подарить цветы, а произвести приятное впечатление.</p>
+      </div>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><span>Для каких поводов подходит доставка цветов по Киеву</span></h3>
+        <p>Сервис интернет-магазина Kvitochka пригодится в разных ситуациях. Доставка цветов по Киеву удобна, если вы:</p>
+        <ul class="kv-seo__chips">
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="5"/><circle cx="15" cy="14" r="5"/><path d="M10 5l2-2 2 2"/></svg></span><span>готовитесь к свадьбе или другому важному событию;</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.2-9A4.8 4.8 0 0 1 12 6.5 4.8 4.8 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg></span><span>хотите помириться и сделать искренний жест;</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><span>любите сюрпризы даже без особого повода;</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span>просто не располагаете временем, чтобы самостоятельно искать букет.</span></li>
+        </ul>
+        <p>Цветы уместны на день рождения, юбилей, профессиональный праздник, 8 Марта, День святого Валентина или просто для того, чтобы сказать «спасибо» или «я рядом».</p>
+      </div>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span>Доставка цветов курьером по Киеву и в пригород</span></h3>
+        <p>Сотрудники интернет-магазина цветов Kvitochka хорошо знают районы столицы и планируют маршруты так, чтобы букет прибыл вовремя и сохранил аккуратный вид. Цветы можно доставить домой, в офис или непосредственно к месту проведения мероприятия.</p>
+        <p>Доставка осуществляется во все районы Киева, а также в пригород и Киевскую область. Курьеры хорошо ориентируются на улицах столицы и помогут организовать вручение по указанному адресу.</p>
+        <p class="kv-seo__note"><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span>Оформите заказ и подарите радость без лишних хлопот. Сохраните контакты интернет-магазина цветов Kvitochka в телефоне.</span></p>
+      </div>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><span>Насколько лояльны сотрудники Kvitochka и что нужно для заказа?</span></h3>
+        <p>Сотрудники цветочной мастерской «Квіточка» готовы учесть ваши индивидуальные пожелания и помочь с выбором букета. Вы можете проконсультироваться по поводу состава композиции, бюджета, времени доставки, оформления и способа вручения.</p>
+        <p>Чтобы флористы собрали букет, который будет соответствовать вашим ожиданиям, расскажите менеджеру как можно больше деталей. Укажите возраст получателя, его предпочтения и желаемый стиль композиции. Иногда помогают даже имя и цвет глаз — эти детали позволяют подобрать гармоничную цветовую гамму и общее настроение букета.</p>
+        <p>Перед заказом ознакомьтесь с каталогом: сохраните варианты, которые вам понравились, и опишите те, которые точно не подойдут. Чем больше информации получит менеджер, тем точнее флористы смогут собрать композицию.</p>
+        <p>Чтобы избежать непредвиденных ситуаций, заранее продумайте детали доставки. Убедитесь, что получатель будет на месте. Для доставки цветов в офис важно знать график работы, время перерыва и возможные совещания.</p>
+      </div>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span>Как избежать непредвиденных ситуаций?</span></h3>
+        <p>Важно заранее учитывать возможные форс-мажорные обстоятельства и предусмотреть запасной вариант доставки. Если получателя не будет по указанному адресу, сотрудники Kvitochka свяжутся с заказчиком и согласуют дальнейшие действия. Команда студии отличается внимательностью и умением находить решения даже в нестандартных ситуациях.</p>
+      </div>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-9.2-9A4.8 4.8 0 0 1 12 6.5 4.8 4.8 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg></span><span>Доставка цветов в День святого Валентина и 8 Марта</span></h3>
+        <p>В такие дни принято дарить цветы, поэтому позаботьтесь о приятном подарке заранее. Это поможет сэкономить время и избавит от необходимости искать букет в последний момент.</p>
+        <p>Доставку также можно запланировать на удобные дату и время. В праздничные дни ассортимент может быть ограничен из-за большого количества предварительных заказов. Некоторые сорта цветов быстро заканчиваются, поэтому рекомендуем заранее уточнить их наличие.</p>
+        <p>Если нужной композиции не окажется в наличии, флорист предложит достойную альтернативу, сохранив стиль, цветовую гамму и общее настроение букета. Вы обязательно найдёте красивые свежие цветы для любимого или близкого человека!</p>
+      </div>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span>Почему стоит заказать доставку цветов в Kvitochka?</span></h3>
+        <figure class="kv-seo__fig kv-seo__fig--right"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-23-570x430.webp" width="570" height="430" alt="Флористы Kvitochka создают букеты под заказ" loading="lazy"><figcaption>Более 20 лет создаём букеты под заказ</figcaption></figure>
+        <p>Интернет-магазин цветов Kvitochka уже более двух десятилетий осуществляет курьерскую доставку цветов в Киеве. Флористы с многолетним опытом знают, как создать свежую, гармоничную и эффектную композицию.</p>
+        <p>Принимая индивидуальные заказы, наши дизайнеры создают красивые и неповторимые букеты с учётом пожеланий клиентов. За годы работы в сфере флористики мы накопили ценный опыт, тщательно выбираем производителей и поставщиков цветочной продукции и постоянно совершенствуем сервис доставки цветов по Киеву, в пригород и Киевскую область.</p>
+      </div>
+
+      <div class="kv-seo__sec">
+        <h3><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span>Преимущества Kvitochka</span></h3>
+        <ul class="kv-seo__adv">
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span>более 20 лет работы в сфере флористики</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><span>консультация флориста при выборе букета</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span>профессиональное оформление букетов и композиций</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span><span>доставка-сюрприз без предварительного уведомления получателя</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c5 0 9 4.5 10 7a13 13 0 0 1-2.4 3.4M6.6 6.6C4.4 8 2.8 10.2 2 12c1 2.5 5 7 10 7a9.9 9.9 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></span><span>возможность анонимной доставки</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span>актуальные цены на букеты и композиции</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span><span>собственная курьерская доставка по Киеву, в пригород и Киевскую область</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span>срочная доставка цветов в день заказа</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6a2 2 0 0 1 4 0v5"/><path d="M11 10V4a2 2 0 0 1 4 0v6"/><path d="M15 10V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3 14a2 2 0 0 1 3.4-2L7 13"/></svg></span><span>вручение лично в руки</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg></span><span>фотография готовой композиции и, при необходимости, фотоподтверждение доставки</span></li>
+        <li><span class="kv-ico kv-ico--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span><span>возможность выбрать удобный способ оплаты</span></li>
+        </ul>
+      </div>
+
+      <div class="kv-seo__cta">
+        <p>Закажите доставку цветов в Киеве в Kvitochka — мы позаботимся о создании букета, его доставке и своевременном вручении получателю.</p>
+        <a class="kv-seo__btn" href="https://kvitochka.ua/internet-magazin-cvetov">Выбрать букет <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <button class="kv-seo__toggle" type="button" aria-expanded="false" aria-controls="kv-seo-body">Читать полностью</button>
+  </div>
+
+  <div class="kv-faq" id="faq">
+    <aside class="kv-faq__aside">
+      <h2>Вопросы и ответы</h2>
+      <p>Не нашли ответ? Флорист подскажет по составу, бюджету и времени доставки.</p>
+      <a class="kv-faq__call" href="tel:+380989946700"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>+38 098 994 67 00</a>
+      <div class="kv-faq__msg">
+        <a href="viber://add?number=380989946700" rel="nofollow">Viber</a>
+        <a href="https://t.me/Kvitochka_kyiv_flower_delivery" rel="nofollow">Telegram</a>
+        <a href="https://wa.me/380989946700" rel="nofollow">WhatsApp</a>
+      </div>
+    </aside>
+    <div class="kv-faq__main">
+      <h3 class="kv-faq__group"><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17h.01"/></svg></span><span>Частые вопросы по заказу и доставке букетов цветов в Киеве</span></h3>
+      <div class="kv-faq__list">
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Как заказать записку (открытку) к букету цветов с доставкой в Киеве?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Одним из важных моментов заказа цветов является вложение открытки в букет. При оформлении заявки оставьте свой текст в специально отведённом окошке. Это может быть поздравление с днём рождения, с годовщиной, с профессиональным праздником, а также слова благодарности, извинения, соболезнования. Если доставка не приурочена к особой дате, оставьте краткий текст: «улыбнись», «хорошего дня», «люблю», «самой удивительной девушке на свете!» — да всё, что угодно! Опция бесплатная.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Как оплатить заказ цветов?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Оплатить заказ можно картой прямо на сайте при оформлении заявки. Если вам удобнее другой способ оплаты, уточните доступные варианты у менеджера — мы подберём удобное решение, в том числе для заказов из другого города или из-за границы.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Как заказать фотографию с места доставки цветов?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Укажите это в комментарии к заказу или сообщите менеджеру. Мы пришлём фотографию готовой композиции перед отправкой, а при необходимости — фотоподтверждение доставки после вручения.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Как быстро делается доставка цветов по Киеву и сколько стоит срочная доставка букетов?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Срочная доставка букетов по Киеву выполняется курьером в течение 1–2 часов. Срочная доставка и вручение в точно определённое время оплачиваются дополнительно — стоимость согласовывается при оформлении заказа. Учитывайте пробки и часы пик: подготовка и доставка букета могут занять от 40 минут до нескольких часов.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Как оформить заказ и сколько стоит доставка цветов в Киеве?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Выберите букет в каталоге, добавьте его в корзину и заполните форму заявки: адрес, дату и время доставки, данные получателя и текст открытки. Бесплатная доставка цветов по Киеву доступна с 9:00 в согласованный временной интервал. Стоимость доставки в пригород и Киевскую область уточняйте у менеджера.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Как заказать доставку цветов, не зная адреса получателя?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>По предварительной договорённости возможна доставка по номеру телефона: курьер свяжется с получателем и уточнит удобное место и время. Если у вас есть только никнейм в Instagram, Telegram или TikTok, мы попробуем связаться с человеком через социальную сеть и с его согласия доставить цветы.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Как сохранить анонимность при доставке цветов?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Заранее сообщите об этом менеджеру или напишите в поле «Комментарии» при оформлении заказа: «Доставить анонимно». Имя заказчика не будет раскрыто получателю.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Каковы гарантии качества цветов и своевременной доставки?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Флористы собирают каждый букет из свежих цветов специально под ваш заказ, а по запросу присылают фото готовой композиции. Если каких-то цветов нет в наличии, мы предложим замену с сохранением стиля, размера и цветовой гаммы или перенос даты. Курьеры знают районы Киева и планируют маршрут так, чтобы букет прибыл вовремя.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Можно ли заказать доставку цветов без предупреждения, в виде сюрприза?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Да, мы выполняем доставку-сюрприз без предварительного уведомления получателя. Укажите это в заявке — курьер свяжется с получателем непосредственно перед вручением. Убедитесь, что человек будет по указанному адресу в выбранное время.</p></div></details>
+      </div>
+      <h3 class="kv-faq__group"><span class="kv-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l7-7"/></svg></span><span>ЧаВО по свежести и происхождению цветов</span></h3>
+      <div class="kv-faq__list">
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Почему букет акционный? Не означает ли это, что цветы несвежие?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Нет. Акционная цена не связана со свежестью: скидки появляются благодаря сезонным предложениям, выгодным закупкам у поставщиков или специальным программам, например скидке для военнослужащих. Все букеты собираются из свежих цветов под конкретный заказ.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Как подольше сохранить свежесть букета цветов?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Поставьте букет в чистую вазу с прохладной водой. Обновите срез стеблей острым ножом под углом и уберите листья, которые окажутся в воде. Меняйте воду каждые 1–2 дня, держите цветы вдали от батарей, прямых солнечных лучей и фруктов. Если курьер передал подкормку — добавьте её в воду.</p></div></details>
+        <details class="kv-faq__item"><summary><span class="kv-ico kv-ico--xs" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C9 9.5 9 3.5 12 3.5s3 6 0 6zM12 14.5c3 0 3 6 0 6s-3-6 0-6zM9.5 12c0 3-6 3-6 0s6-3 6 0zM14.5 12c0-3 6-3 6 0s-6 3-6 0z"/></svg></span><span class="kv-faq__q">Откуда завозят растения и цветы?</span><span class="kv-faq__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="kv-faq__a"><p>Мы работаем с проверенными производителями и поставщиками. В каталоге есть украинские розы от отечественных производителей, а также импортные цветы — например, розы из Эквадора и Голландии. Ассортимент зависит от сезона, поэтому наличие конкретных сортов лучше уточнять у менеджера.</p></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Как заказать записку (открытку) к букету цветов с доставкой в Киеве?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Одним из важных моментов заказа цветов является вложение открытки в букет. При оформлении заявки оставьте свой текст в специально отведённом окошке. Это может быть поздравление с днём рождения, с годовщиной, с профессиональным праздником, а также слова благодарности, извинения, соболезнования. Если доставка не приурочена к особой дате, оставьте краткий текст: «улыбнись», «хорошего дня», «люблю», «самой удивительной девушке на свете!» — да всё, что угодно! Опция бесплатная."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Как оплатить заказ цветов?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Оплатить заказ можно картой прямо на сайте при оформлении заявки. Если вам удобнее другой способ оплаты, уточните доступные варианты у менеджера — мы подберём удобное решение, в том числе для заказов из другого города или из-за границы."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Как заказать фотографию с места доставки цветов?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Укажите это в комментарии к заказу или сообщите менеджеру. Мы пришлём фотографию готовой композиции перед отправкой, а при необходимости — фотоподтверждение доставки после вручения."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Как быстро делается доставка цветов по Киеву и сколько стоит срочная доставка букетов?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Срочная доставка букетов по Киеву выполняется курьером в течение 1–2 часов. Срочная доставка и вручение в точно определённое время оплачиваются дополнительно — стоимость согласовывается при оформлении заказа. Учитывайте пробки и часы пик: подготовка и доставка букета могут занять от 40 минут до нескольких часов."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Как оформить заказ и сколько стоит доставка цветов в Киеве?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Выберите букет в каталоге, добавьте его в корзину и заполните форму заявки: адрес, дату и время доставки, данные получателя и текст открытки. Бесплатная доставка цветов по Киеву доступна с 9:00 в согласованный временной интервал. Стоимость доставки в пригород и Киевскую область уточняйте у менеджера."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Как заказать доставку цветов, не зная адреса получателя?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "По предварительной договорённости возможна доставка по номеру телефона: курьер свяжется с получателем и уточнит удобное место и время. Если у вас есть только никнейм в Instagram, Telegram или TikTok, мы попробуем связаться с человеком через социальную сеть и с его согласия доставить цветы."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Как сохранить анонимность при доставке цветов?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Заранее сообщите об этом менеджеру или напишите в поле «Комментарии» при оформлении заказа: «Доставить анонимно». Имя заказчика не будет раскрыто получателю."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Каковы гарантии качества цветов и своевременной доставки?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Флористы собирают каждый букет из свежих цветов специально под ваш заказ, а по запросу присылают фото готовой композиции. Если каких-то цветов нет в наличии, мы предложим замену с сохранением стиля, размера и цветовой гаммы или перенос даты. Курьеры знают районы Киева и планируют маршрут так, чтобы букет прибыл вовремя."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Можно ли заказать доставку цветов без предупреждения, в виде сюрприза?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Да, мы выполняем доставку-сюрприз без предварительного уведомления получателя. Укажите это в заявке — курьер свяжется с получателем непосредственно перед вручением. Убедитесь, что человек будет по указанному адресу в выбранное время."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Почему букет акционный? Не означает ли это, что цветы несвежие?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Нет. Акционная цена не связана со свежестью: скидки появляются благодаря сезонным предложениям, выгодным закупкам у поставщиков или специальным программам, например скидке для военнослужащих. Все букеты собираются из свежих цветов под конкретный заказ."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Как подольше сохранить свежесть букета цветов?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Поставьте букет в чистую вазу с прохладной водой. Обновите срез стеблей острым ножом под углом и уберите листья, которые окажутся в воде. Меняйте воду каждые 1–2 дня, держите цветы вдали от батарей, прямых солнечных лучей и фруктов. Если курьер передал подкормку — добавьте её в воду."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Откуда завозят растения и цветы?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Мы работаем с проверенными производителями и поставщиками. В каталоге есть украинские розы от отечественных производителей, а также импортные цветы — например, розы из Эквадора и Голландии. Ассортимент зависит от сезона, поэтому наличие конкретных сортов лучше уточнять у менеджера."
+   }
+  }
+ ]
+}
+</script>
+
+<script>
+(function(){
+  var root=document.querySelector('.kv-seo');if(!root)return;
+  var body=root.querySelector('.kv-seo__body'),btn=root.querySelector('.kv-seo__toggle');
+  root.classList.add('is-collapsible');
+  btn.addEventListener('click',function(){
+    var open=!root.classList.contains('is-open');
+    root.classList.toggle('is-open',open);
+    body.style.maxHeight=open?body.scrollHeight+'px':'';
+    btn.setAttribute('aria-expanded',open);
+    btn.textContent=open?'Свернуть':'Читать полностью';
+    if(!open)root.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  window.addEventListener('resize',function(){
+    if(root.classList.contains('is-open'))body.style.maxHeight=body.scrollHeight+'px';
+  });
+})();
+</script>
+<!-- ===== КОНЕЦ SEO-ТЕКСТА ===== -->
+
 </body>
 </html>
