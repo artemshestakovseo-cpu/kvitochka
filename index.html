@@ -362,20 +362,21 @@
 <style>
 .pv-cat{max-width:1140px;margin:0 auto;padding:18px 16px 40px;font-family:inherit}
 .pv-cat h2{margin:0 0 14px;font-size:22px;font-weight:600;color:#3a9aa2}
-.pv-cat__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pv-cat__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.pv-card{text-decoration:none}
 .pv-card__img{aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:#fbe3e6}
 .pv-card__img img{width:100%;height:100%;object-fit:cover;display:block}
-.pv-card p{margin:10px 0 4px;font-size:14px;color:#43363f}
+.pv-card p{margin:10px 0 4px;font-size:14px;line-height:1.35;color:#43363f}
+@media (max-width:480px){.pv-card p{font-size:12px}}
 .pv-card b{color:#b33a5e}
-@media (max-width:767px){.pv-cat__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.pv-cat{padding:14px 12px 30px}.pv-cat h2{font-size:18px}}
+@media (max-width:767px){.pv-cat__grid{gap:10px}.pv-cat{padding:14px 12px 30px}.pv-cat h2{font-size:18px}}
 </style>
 <section class="pv-cat">
   <h2>Актуальные предложения</h2>
   <div class="pv-cat__grid">
-    <div class="pv-card"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-23-570x430.webp" alt=""></div><p>Букет роз</p><b>от 1 200 грн</b></div>
-    <div class="pv-card"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-24-570x430.webp" alt=""></div><p>Букет 101 роза</p><b>от 5 900 грн</b></div>
-    <div class="pv-card"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/flowers-delivery-1-570x430.webp" alt=""></div><p>Авторский букет</p><b>от 1 500 грн</b></div>
-    <div class="pv-card"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000008/flowers-delivery-6-570x430.webp" alt=""></div><p>Композиция в коробке</p><b>от 1 800 грн</b></div>
+    <a class="pv-card" href="https://kvitochka.ua/"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000009/bouquet-romashka-pion3-300x300.webp" width="300" height="300" alt="Букет с ромашками и пионами" loading="lazy"></div><p>Букет с ромашками и пионами</p></a>
+    <a class="pv-card" href="https://kvitochka.ua/"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000004/bouquet-17-roses-winter-2024-4-300x300.webp" width="300" height="300" alt="Букет из 17 роз" loading="lazy"></div><p>Букет из 17 роз</p></a>
+    <a class="pv-card" href="https://kvitochka.ua/"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/summer2025-roses-bouquet-300x300.webp" width="300" height="300" alt="Летний букет роз" loading="lazy"></div><p>Летний букет роз</p></a>
   </div>
 </section>
 <!-- ===== КОНЕЦ ПРЕВЬЮ КАТАЛОГА ===== -->
