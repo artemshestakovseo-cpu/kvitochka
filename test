@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kvitochka — слайдер (превью)</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#fffcfa;font-family:'Montserrat',Arial,sans-serif}</style>
+</head>
+<body>
+
+<!-- ===== ТОЛЬКО ДЛЯ ПРЕВЬЮ: имитация шапки и поиска сайта, на сайт не переносить ===== -->
+<style>
+.pv-h{font-family:inherit;background:#fffcfa}
+.pv-h a{text-decoration:none}
+.pv-h__in{max-width:1140px;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:20px}
+.pv-h__top .pv-h__in{height:88px}
+.pv-h__burger{flex:0 0 auto;width:62px;height:46px;border:0;cursor:pointer;
+  border-radius:30px 0 30px 0;background:linear-gradient(135deg,#f3a26b,#e8707e);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+.pv-h__burger span{display:block;width:26px;height:2px;background:#fff;border-radius:2px}
+.pv-h__logo{min-width:0;flex:0 1 auto}
+.pv-h__logo img{display:block;height:54px;width:auto;max-width:100%;object-fit:contain}
+.pv-h__links{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;margin:0 0 0 auto;padding:0}
+.pv-h__links a{font-size:14px;color:#43363f}
+.pv-h__links a:hover{color:#b33a5e}
+.pv-h__icons{display:flex;align-items:center;gap:16px;margin-left:20px}
+.pv-h__icons a,.pv-h__icons button{display:flex;width:32px;height:32px;padding:0;border:0;background:none;cursor:pointer;align-items:center;justify-content:center}
+.pv-h__icons img{max-width:30px;max-height:30px}
+.pv-h__only-m{display:none!important}
+.pv-h__bar{background:#3a9aa2}
+.pv-h__bar .pv-h__in{height:54px;gap:24px}
+.pv-h__cat{position:relative}
+.pv-h__cat>button{display:flex;align-items:center;gap:10px;height:54px;padding:0 18px;border:0;background:#2d7f86;
+  color:#fff;font:600 14px inherit;font-family:inherit;cursor:pointer}
+.pv-h__cat>button i{display:inline-block;width:16px;height:2px;background:#fff;box-shadow:0 -5px #fff,0 5px #fff}
+.pv-h__cat ul{display:none;position:absolute;z-index:20;left:0;top:100%;width:280px;margin:0;padding:8px 0;list-style:none;
+  background:#fff;box-shadow:0 12px 30px rgba(67,54,63,.15);max-height:70vh;overflow:auto}
+.pv-h__cat.is-open ul,.pv-h__cat:hover ul{display:block}
+.pv-h__cat li a{display:block;padding:8px 18px;font-size:14px;color:#43363f}
+.pv-h__cat li a:hover{background:#fdeceb;color:#b33a5e}
+.pv-h__phone{color:#fff;font-weight:600;font-size:15px;white-space:nowrap}
+.pv-h__search{flex:1;display:flex;max-width:520px;margin-left:auto}
+.pv-h__search input{flex:1;min-width:0;height:38px;padding:0 14px;border:0;border-radius:19px 0 0 19px;font:14px inherit;font-family:inherit;color:#43363f}
+.pv-h__search button{height:38px;padding:0 20px;border:0;border-radius:0 19px 19px 0;background:#e8707e;color:#fff;font:600 14px inherit;font-family:inherit;cursor:pointer}
+@media (max-width:991px){
+  .pv-h__links,.pv-h__phone{display:none}
+  .pv-h__icons{margin-left:auto}
+}
+@media (max-width:767px){
+  .pv-h__top .pv-h__in{height:72px;gap:12px;padding:0 12px}
+  .pv-h__burger{width:52px;height:40px}
+  .pv-h__logo img{height:42px}
+  .pv-h__icons{gap:8px}
+  .pv-h__only-m{display:flex!important}
+  .pv-h__bar{display:none}
+  .pv-h.is-search .pv-h__bar{display:block}
+  .pv-h__bar .pv-h__in{height:auto;padding:8px 12px}
+  .pv-h__cat{display:none}
+  .pv-h__search{max-width:none}
+}
+@media (max-width:360px){
+  .pv-h__top .pv-h__in{gap:8px;padding:0 10px}
+  .pv-h__burger{width:44px;height:36px}
+  .pv-h__icons{gap:4px}
+  .pv-h__logo img{height:34px}
+  .pv-h__icons a,.pv-h__icons button{width:28px}
+  .pv-h__icons img{max-width:24px;max-height:24px}
+}
+</style>
+<header class="pv-h">
+  <div class="pv-h__top">
+    <div class="pv-h__in">
+      <button class="pv-h__burger" type="button" aria-label="Меню"><span></span><span></span><span></span></button>
+      <a class="pv-h__logo" href="https://kvitochka.ua/"><img src="https://kvitochka.ua/image/cache/catalog/image/catalog/logo1.webp" width="183" height="63" alt="Kvitochka — доставка цветов Киев"></a>
+      <ul class="pv-h__links"><li><a href="https://kvitochka.ua/about-us">О нас</a></li><li><a href="https://kvitochka.ua/faq">FAQ</a></li><li><a href="https://kvitochka.ua/review">Отзывы</a></li><li><a href="https://kvitochka.ua/dostavka-oplata">Доставка и оплата</a></li><li><a href="https://kvitochka.ua/stati">Новости</a></li><li><a href="https://kvitochka.ua/guarantees">Гарантии</a></li></ul>
+      <div class="pv-h__icons">
+        <a href="#" aria-label="Настройки"><img src="https://kvitochka.ua/image/system/icon-settings.svg" alt=""></a>
+        <a class="pv-h__only-m" href="tel:+380989946700" aria-label="Позвонить"><img src="https://kvitochka.ua/image/system/icon-mobile-phone.svg" alt=""></a>
+        <button class="pv-h__only-m" type="button" aria-label="Поиск" onclick="this.closest('.pv-h').classList.toggle('is-search')"><img src="https://kvitochka.ua/image/system/icon-mobile-search.svg" alt=""></button>
+        <a href="#" aria-label="Корзина"><img src="https://kvitochka.ua/image/system/icon-cart.svg" alt=""></a>
+      </div>
+    </div>
+  </div>
+  <div class="pv-h__bar">
+    <div class="pv-h__in">
+      <div class="pv-h__cat">
+        <button type="button" onclick="this.parentNode.classList.toggle('is-open')"><i></i>Список категорий</button>
+        <ul>
+        <li><a href="https://kvitochka.ua/bukety-iz-roz">Розы</a></li>
+        <li><a href="https://kvitochka.ua/vesennie-bukety">Цветы весны</a></li>
+        <li><a href="https://kvitochka.ua/cveti-v-korobkah">Цветы в коробке</a></li>
+        <li><a href="https://kvitochka.ua/korziny-cvetov">Цветы в корзине</a></li>
+        <li><a href="https://kvitochka.ua/internet-magazin-cvetov">Полный каталог цветов</a></li>
+        <li><a href="https://kvitochka.ua/igrushki-iz-cvetov">Игрушки из цветов</a></li>
+        <li><a href="https://kvitochka.ua/bukety-biznes-klassa">Бизнес букет</a></li>
+        <li><a href="https://kvitochka.ua/povod">Повод</a></li>
+        <li><a href="https://kvitochka.ua/komu">Кому</a></li>
+        <li><a href="https://kvitochka.ua/dopolnitelnie-tovari">Дополнительно</a></li>
+        <li><a href="https://kvitochka.ua/svadebnye-bukety-nevesty">Букет невесты</a></li>
+        <li><a href="https://kvitochka.ua/svadebnaja-floristika">Свадебная флористика</a></li>
+        <li><a href="https://kvitochka.ua/podarochnye-korziny">Подарочные корзины</a></li>
+        <li><a href="https://kvitochka.ua/ritualnaja-floristika">Ритуальная флористика</a></li>
+        <li><a href="https://kvitochka.ua/foto-dostavok">Фотоотчет доставок</a></li>
+        <li><a href="https://kvitochka.ua/bouquets-in-rent">Букеты в аренду</a></li>
+        <li><a href="https://kvitochka.ua/serdce-iz-roz">Сердца из цветов</a></li>
+        </ul>
+      </div>
+      <a class="pv-h__phone" href="tel:+380989946700">+38098-994-6700</a>
+      <form class="pv-h__search" action="https://kvitochka.ua/index.php" method="get" target="_blank">
+        <input type="hidden" name="route" value="product/search">
+        <input type="text" name="search" placeholder="Поиск товара по каталогу" minlength="2" aria-label="Поиск товара">
+        <button type="submit">Найти</button>
+      </form>
+    </div>
+  </div>
+</header>
+<!-- ===== КОНЕЦ ПРЕВЬЮ ШАПКИ ===== -->
+
+<!-- ===== НАЧАЛО БЛОКА (заменяет .home_slier_wrapper) ===== -->
+<style>
+.kv-sl{
+  --kv-teal:#3a9aa2;--kv-teal-dark:#2d7f86;--kv-rose:#b33a5e;
+  --kv-ink:#43363f;--kv-line:#f0dcdc;--kv-soft:#fdeceb;--kv-bg:#fffcfa;
+  box-sizing:border-box;max-width:1140px;margin:0 auto;padding:16px 16px 0;
+  font-family:inherit;color:var(--kv-ink);
+}
+.kv-sl *,.kv-sl *::before,.kv-sl *::after{box-sizing:border-box}
+.kv-sl h1{
+  margin:0 0 14px;text-align:center;
+  font-size:clamp(20px,2.2vw,26px);line-height:1.25;font-weight:600;color:var(--kv-teal);
+}
+.kv-sl__viewport{position:relative}
+.kv-sl__track{
+  display:flex;align-items:flex-start;
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.kv-sl__track::-webkit-scrollbar{display:none}
+.kv-sl__slide{
+  flex:0 0 100%;scroll-snap-align:start;
+  display:grid;grid-template-columns:320px minmax(0,1fr);gap:36px;align-items:center;
+  padding:4px 2px;
+}
+.kv-sl__media{
+  aspect-ratio:570/430;border-radius:100px 0 100px 0;overflow:hidden;background:var(--kv-soft);
+}
+.kv-sl__media img{display:block;width:100%;height:100%;object-fit:cover}
+.kv-sl__content h2{
+  margin:0 0 12px;overflow-wrap:break-word;hyphens:auto;font-size:clamp(18px,1.8vw,22px);line-height:1.3;font-weight:600;color:var(--kv-teal-dark);
+}
+.kv-sl__text{
+  position:relative;max-height:calc(1.65em * 3);overflow:hidden;
+  transition:max-height .35s ease;
+}
+.kv-sl__text::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2.4em;
+  background:linear-gradient(rgba(255,252,250,0),var(--kv-bg));
+  transition:opacity .25s;pointer-events:none;
+}
+.kv-sl__text p{margin:0;font-size:15px;line-height:1.65;max-width:70ch}
+.kv-sl__slide.is-open .kv-sl__text::after{opacity:0}
+.kv-sl__actions{display:flex;flex-wrap:wrap;align-items:center;gap:6px 24px;margin-top:8px}
+.kv-sl__more{
+  margin:0;padding:6px 0 2px;border:0;background:none;cursor:pointer;
+  font:inherit;font-size:14px;font-weight:600;color:var(--kv-teal-dark);
+  border-bottom:1px dashed currentColor;
+}
+.kv-sl__more:hover{color:var(--kv-rose)}
+.kv-sl__link{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 0;
+  font-size:14px;font-weight:600;color:var(--kv-rose);text-decoration:none;
+}
+.kv-sl__link img{width:16px;height:auto;transition:transform .2s}
+.kv-sl__link:hover img{transform:translateX(4px)}
+
+.kv-sl__nav{
+  position:absolute;right:2px;bottom:4px;
+  display:flex;align-items:center;gap:12px;
+}
+.kv-sl__slide{padding-bottom:4px}
+.kv-sl__content{padding-bottom:52px} /* место под стрелки */
+.kv-sl__count{font-size:14px;color:var(--kv-teal-dark);min-width:3.5em;text-align:center;font-variant-numeric:tabular-nums}
+.kv-sl__arrow{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;padding:0;border:1.5px solid var(--kv-teal);border-radius:50%;
+  background:none;color:var(--kv-teal);cursor:pointer;transition:background-color .2s,color .2s;
+}
+.kv-sl__arrow:hover{background:var(--kv-teal);color:#fff}
+.kv-sl__arrow svg{width:18px;height:18px}
+.kv-sl__arrow:focus-visible,.kv-sl__more:focus-visible,.kv-sl__link:focus-visible{outline:2px solid var(--kv-teal);outline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){
+  .kv-sl__track{scroll-behavior:auto}
+  .kv-sl *{transition:none!important}
+}
+@media (max-width:900px){
+  .kv-sl__slide{grid-template-columns:240px minmax(0,1fr);gap:24px}
+}
+@media (max-width:600px){
+  .kv-sl{padding:16px 12px 4px}
+  .kv-sl h1{font-size:20px;margin-bottom:14px}
+  .kv-sl__slide{grid-template-columns:110px minmax(0,1fr);gap:14px;align-items:start}
+  .kv-sl__media{border-radius:36px 0 36px 0}
+  .kv-sl__content h2{font-size:16px;margin-bottom:8px}
+  .kv-sl__text{max-height:calc(1.6em * 3)}
+  .kv-sl__content{padding-bottom:0}
+  .kv-sl__nav{position:static;justify-content:flex-end;margin-top:6px}
+  .kv-sl__text p{font-size:14px;line-height:1.6}
+  .kv-sl__arrow{width:40px;height:40px}
+}
+/* Узкие телефоны: картинка рядом с заголовком, текст на всю ширину */
+@media (max-width:440px){
+  .kv-sl h1{font-size:18px}
+  .kv-sl__slide{
+    grid-template-columns:88px minmax(0,1fr);
+    grid-template-areas:"media title" "text text" "actions actions";
+    gap:10px 12px;align-items:center;
+  }
+  .kv-sl__content{display:contents}
+  .kv-sl__media{grid-area:media;border-radius:28px 0 28px 0}
+  .kv-sl__content h2{grid-area:title;margin:0;font-size:15px;line-height:1.3}
+  .kv-sl__text{grid-area:text}
+  .kv-sl__actions{grid-area:actions;margin-top:0;gap:4px 18px}
+  .kv-sl__nav{gap:10px;margin-top:4px}
+}
+@media (max-width:340px){
+  .kv-sl{padding-left:10px;padding-right:10px}
+  .kv-sl__slide{grid-template-columns:72px minmax(0,1fr)}
+  .kv-sl__content h2{font-size:14px}
+  .kv-sl__text p{font-size:13.5px}
+}
+</style>
+
+<section class="kv-sl" aria-roledescription="карусель" aria-label="Информация о доставке">
+  <h1>Доставка цветов по Киеву - закажите букет в Kvitochka</h1>
+  <div class="kv-sl__viewport">
+    <div class="kv-sl__track" tabindex="0">
+      <article class="kv-sl__slide" role="group" aria-roledescription="слайд" aria-label="1 из 7">
+        <div class="kv-sl__media"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000007/dostavka-cvetov-kyiv-kvitochka2-570x430.webp" width="570" height="430" alt="Сервис доставки букетов в Киеве и области"></div>
+        <div class="kv-sl__content">
+          <h2>Сервис доставки букетов в Киеве и области</h2>
+          <div class="kv-sl__text" id="kv-sl-t0"><p>Уже более 20 лет мы предоставляем качественные флористические услуги. Доставка цветов по Киеву и Киевской области осуществляется ежедневно с 6:00 до 23:00. Срочная доставка букетов по Киеву выполняется курьером в течение 1–2 часов. Не знаете точного адреса получателя? Не проблема — по предварительной договорённости возможна доставка по номеру телефона. При оформлении заказа уточните наличие необходимых цветов и желаемого состава композиции. Правильно подобранный букет поможет попросить прощения, сохранить отношения, выразить благодарность, поздравить близкого человека или признаться в любви!</p></div>
+          <div class="kv-sl__actions"><button class="kv-sl__more" type="button" aria-expanded="false" aria-controls="kv-sl-t0">Читать полностью</button></div>
+        </div>
+      </article>
+      <article class="kv-sl__slide" role="group" aria-roledescription="слайд" aria-label="2 из 7">
+        <div class="kv-sl__media"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000008/flowers-delivery-6-570x430.webp" width="570" height="430" alt="Прием заказов на доставку цветов Киев" loading="lazy"></div>
+        <div class="kv-sl__content">
+          <h2>Прием заказов на доставку цветов Киев</h2>
+          <div class="kv-sl__text" id="kv-sl-t1"><p>Время и стоимость доставки цветов по Киеву согласовываются при оформлении заказа. Бесплатная доставка цветов по Киеву доступна с 9:00 в согласованный временной интервал. Срочная доставка в течение одного–двух часов или вручение в точно определённое время оплачиваются дополнительно. Для военнослужащих действует специальная скидка, распространяющаяся на все букеты и композиции. Обратитесь к менеджеру, чтобы получить номер купона. Цветочные композиции в салоне «Квіточка» создаются специально под ваш заказ. Киев — большой город с интенсивным движением, пробками и часами пик. Поэтому подготовка и доставка букета могут занять от 40 минут до нескольких часов.</p></div>
+          <div class="kv-sl__actions"><button class="kv-sl__more" type="button" aria-expanded="false" aria-controls="kv-sl-t1">Читать полностью</button></div>
+        </div>
+      </article>
+      <article class="kv-sl__slide" role="group" aria-roledescription="слайд" aria-label="3 из 7">
+        <div class="kv-sl__media"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000007/surprise-delivery-570x430.webp" width="570" height="430" alt="Анонимная доставка цветов по Киеву" loading="lazy"></div>
+        <div class="kv-sl__content">
+          <h2>Анонимная доставка цветов по Киеву</h2>
+          <div class="kv-sl__text" id="kv-sl-t2"><p>Хотите заказать анонимную доставку букета в Киеве? Заранее свяжитесь с менеджером магазина «Квіточка» или оставьте соответствующую пометку при оформлении заказа. В поле «Комментарии» напишите: «Доставить анонимно». Имя заказчика не будет раскрыто. Если вы хотите организовать неожиданный сюрприз с доставкой цветов по Киеву, также укажите это в заявке. Курьер свяжется с получателем непосредственно перед вручением букета. Закажите доставку цветов по Киеву в магазине «Квіточка»! Наши опытные флористы внимательно учтут все ваши пожелания. Доверяйте деликатные задания проверенным исполнителям!</p></div>
+          <div class="kv-sl__actions"><button class="kv-sl__more" type="button" aria-expanded="false" aria-controls="kv-sl-t2">Читать полностью</button></div>
+        </div>
+      </article>
+      <article class="kv-sl__slide" role="group" aria-roledescription="слайд" aria-label="4 из 7">
+        <div class="kv-sl__media"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/flowers-delivery-1-570x430.webp" width="570" height="430" alt="Наличие цветов, актуальность цен, гарантии" loading="lazy"></div>
+        <div class="kv-sl__content">
+          <h2>Наличие цветов, актуальность цен, гарантии</h2>
+          <div class="kv-sl__text" id="kv-sl-t3"><p>Цены на букеты и композиции в каталоге актуальны. Нужно срочно доставить букет? Обратите внимание: ассортимент может быть ограничен, поэтому рекомендуем заранее уточнить наличие нужного букета. При необходимости возможна частичная или полная замена цветов с сохранением стиля, размера, цветовой гаммы и общего вида композиции. Если выбранных цветов нет в наличии, дату или время вручения можно перенести. Мы понимаем, что решение купить цветы для любимого или близкого человека часто возникает спонтанно. Поэтому прилагаем максимум усилий, чтобы свежий букет был подготовлен и доставлен в нужное время.</p></div>
+          <div class="kv-sl__actions"><button class="kv-sl__more" type="button" aria-expanded="false" aria-controls="kv-sl-t3">Читать полностью</button></div>
+        </div>
+      </article>
+      <article class="kv-sl__slide" role="group" aria-roledescription="слайд" aria-label="5 из 7">
+        <div class="kv-sl__media"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/slide-delivery-flowers-kyiv-570x430.webp" width="570" height="430" alt="Доставка цветов по Киеву по нику в Instagram, Telegram или TikTok" loading="lazy"></div>
+        <div class="kv-sl__content">
+          <h2>Доставка цветов по Киеву по нику в Instagram, Telegram или TikTok</h2>
+          <div class="kv-sl__text" id="kv-sl-t4"><p>Вам понравилась девушка, и вы хотите сделать ей приятный сюрприз, заказав доставку цветов в Киеве? Не знаете её точного адреса или номера телефона, но у вас есть её никнейм в Instagram, Telegram или TikTok? Обращайтесь к нам! Мы попробуем связаться с девушкой через социальную сеть и с её согласия доставить цветы в удобное для неё место и время. После подтверждения деталей доставки вы сможете оплатить заказ и ждать искренних эмоций, улыбок и сердечек. Не забудьте добавить к букету открытку — несколько тёплых слов сделают подарок ещё более особенным! Доставка цветов способна творить чудеса, особенно когда букет подарен от чистого сердца!</p></div>
+          <div class="kv-sl__actions"><button class="kv-sl__more" type="button" aria-expanded="false" aria-controls="kv-sl-t4">Читать полностью</button></div>
+        </div>
+      </article>
+      <article class="kv-sl__slide" role="group" aria-roledescription="слайд" aria-label="6 из 7">
+        <div class="kv-sl__media"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-24-570x430.webp" width="570" height="430" alt="Букет 101 роза — весомый вклад в отношения!" loading="lazy"></div>
+        <div class="kv-sl__content">
+          <h2>Букет 101 роза — весомый вклад в отношения!</h2>
+          <div class="kv-sl__text" id="kv-sl-t5"><p>Заказывайте роскошный букет из 101 розы с доставкой по Киеву и области. В каталоге «Квіточка» — большой выбор букетов, свежие цветы и приятные цены. Организуем быструю доставку роз в удобное для вас время. Выбирайте украинские розы — поддерживайте отечественных производителей и дарите близким красоту, созданную в Украине!</p></div>
+          <div class="kv-sl__actions"><button class="kv-sl__more" type="button" aria-expanded="false" aria-controls="kv-sl-t5">Читать полностью</button><a class="kv-sl__link" href="bukety-iz-roz/buketi-iz-101-rozi">Перейти в раздел <img src="/image/system/arrow-right-red.svg" alt=""></a></div>
+        </div>
+      </article>
+      <article class="kv-sl__slide" role="group" aria-roledescription="слайд" aria-label="7 из 7">
+        <div class="kv-sl__media"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-23-570x430.webp" width="570" height="430" alt="Розы — лучшие предложения флористов!" loading="lazy"></div>
+        <div class="kv-sl__content">
+          <h2>Розы — лучшие предложения флористов!</h2>
+          <div class="kv-sl__text" id="kv-sl-t6"><p>Выбирайте ароматные розы для особенного подарка! Современный дизайн, большой ассортимент и букеты на любой вкус и бюджет. В каталоге представлены розы различных сортов и оттенков от производителей со всего мира. Заказывайте стильные композиции с доставкой по Киеву и Киевской области — срочно, удобно и по доступной цене. Оформить заказ можно онлайн в любое время на сайте интернет-магазина «Квіточка». Выберите букет роз, укажите адрес и время доставки — мы позаботимся о своевременном вручении свежих и красивых цветов.</p></div>
+          <div class="kv-sl__actions"><button class="kv-sl__more" type="button" aria-expanded="false" aria-controls="kv-sl-t6">Читать полностью</button><a class="kv-sl__link" href="bukety-iz-roz">Перейти в раздел <img src="/image/system/arrow-right-red.svg" alt=""></a></div>
+        </div>
+      </article>
+    </div>
+    <div class="kv-sl__nav">
+      <button class="kv-sl__arrow" type="button" data-dir="-1" aria-label="Предыдущий слайд">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      </button>
+      <span class="kv-sl__count" aria-live="polite">1 / 7</span>
+      <button class="kv-sl__arrow" type="button" data-dir="1" aria-label="Следующий слайд">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.querySelector('.kv-sl');if(!root)return;
+  var track=root.querySelector('.kv-sl__track'),
+      slides=root.querySelectorAll('.kv-sl__slide'),
+      count=root.querySelector('.kv-sl__count'),
+      total=slides.length;
+  function current(){return Math.round(track.scrollLeft/track.clientWidth)}
+  function go(i){
+    i=(i+total)%total;
+    track.scrollTo({left:i*track.clientWidth});
+  }
+  root.querySelectorAll('.kv-sl__arrow').forEach(function(b){
+    b.addEventListener('click',function(){go(current()+ +b.dataset.dir)});
+  });
+  track.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){e.preventDefault();go(current()+1)}
+    if(e.key==='ArrowLeft'){e.preventDefault();go(current()-1)}
+  });
+  var t;
+  track.addEventListener('scroll',function(){
+    clearTimeout(t);
+    t=setTimeout(function(){
+      var i=current();count.textContent=(i+1)+' / '+total;
+      slides.forEach(function(s,k){ if(k!==i&&s.classList.contains('is-open'))toggle(s,false) });
+    },80);
+  },{passive:true});
+  function toggle(s,open){
+    s.classList.toggle('is-open',open);
+    var tx=s.querySelector('.kv-sl__text');
+    tx.style.maxHeight=open?tx.scrollHeight+'px':'';
+    var b=s.querySelector('.kv-sl__more');
+    b.setAttribute('aria-expanded',open);
+    b.textContent=open?'Свернуть':'Читать полностью';
+  }
+  var rt;
+  window.addEventListener('resize',function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){
+      root.querySelectorAll('.kv-sl__slide.is-open .kv-sl__text').forEach(function(tx){tx.style.maxHeight=tx.scrollHeight+'px'});
+      track.scrollTo({left:current()*track.clientWidth,behavior:'auto'});
+    },120);
+  });
+  slides.forEach(function(s){
+    s.querySelector('.kv-sl__more').addEventListener('click',function(){
+      toggle(s,!s.classList.contains('is-open'));
+    });
+  });
+})();
+</script>
+<!-- ===== КОНЕЦ БЛОКА ===== -->
+
+<!-- ===== ТОЛЬКО ДЛЯ ПРЕВЬЮ: имитация каталога под блоком, на сайт не переносить ===== -->
+<style>
+.pv-cat{max-width:1140px;margin:0 auto;padding:18px 16px 40px;font-family:inherit}
+.pv-cat h2{margin:0 0 14px;font-size:22px;font-weight:600;color:#3a9aa2}
+.pv-cat__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pv-card__img{aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:#fbe3e6}
+.pv-card__img img{width:100%;height:100%;object-fit:cover;display:block}
+.pv-card p{margin:10px 0 4px;font-size:14px;color:#43363f}
+.pv-card b{color:#b33a5e}
+@media (max-width:767px){.pv-cat__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.pv-cat{padding:14px 12px 30px}.pv-cat h2{font-size:18px}}
+</style>
+<section class="pv-cat">
+  <h2>Актуальные предложения</h2>
+  <div class="pv-cat__grid">
+    <div class="pv-card"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-23-570x430.webp" alt=""></div><p>Букет роз</p><b>от 1 200 грн</b></div>
+    <div class="pv-card"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000002/flowers-2025-24-570x430.webp" alt=""></div><p>Букет 101 роза</p><b>от 5 900 грн</b></div>
+    <div class="pv-card"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/flowers-delivery-1-570x430.webp" alt=""></div><p>Авторский букет</p><b>от 1 500 грн</b></div>
+    <div class="pv-card"><div class="pv-card__img"><img src="https://kvitochka.ua/image/cache/catalog/image/cache/catalog/00000000008/flowers-delivery-6-570x430.webp" alt=""></div><p>Композиция в коробке</p><b>от 1 800 грн</b></div>
+  </div>
+</section>
+<!-- ===== КОНЕЦ ПРЕВЬЮ КАТАЛОГА ===== -->
+
+</body>
+</html>
